@@ -8,11 +8,15 @@
 import Foundation
 
 public struct Card: Hashable, Equatable, Identifiable, Codable {
-    public struct ID: RawRepresentable, Codable, Hashable, Equatable {
+    public struct ID: RawRepresentable, Codable, Hashable, Equatable, ExpressibleByStringLiteral {
         public var rawValue: String
 
         public init(rawValue: String) {
             self.rawValue = rawValue
+        }
+
+        public init(stringLiteral value: String) {
+            self.rawValue = value
         }
     }
 
