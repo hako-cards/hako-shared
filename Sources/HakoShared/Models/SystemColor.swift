@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 public enum SystemColor: String, Codable, Hashable, Equatable {
     case red
