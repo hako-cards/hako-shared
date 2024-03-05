@@ -5,7 +5,7 @@
 //  Created by Kyle Bashour on 2/18/24.
 //
 
-import SwiftUI
+import Foundation
 
 public struct SpendCategory: Identifiable, Hashable, Equatable, Codable {
     public struct ID: RawRepresentable, Codable, Hashable, Equatable {
