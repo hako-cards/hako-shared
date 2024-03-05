@@ -22,6 +22,7 @@ public struct Card: Hashable, Equatable, Identifiable, Codable {
     public var basePoints: [Points]
     public var categoryPoints: PointsKind?
     public var redemptionMultiplier: Double?
+    public var canCombinePoints: Bool
     public var icon: CardIcon
 
     public init(
@@ -31,6 +32,7 @@ public struct Card: Hashable, Equatable, Identifiable, Codable {
         basePoints: [Points],
         categoryPoints: PointsKind? = nil,
         redemptionMultiplier: Double? = nil,
+        canCombinePoints: Bool = false,
         icon: CardIcon
     ) {
         self.id = id
@@ -39,6 +41,7 @@ public struct Card: Hashable, Equatable, Identifiable, Codable {
         self.basePoints = basePoints
         self.categoryPoints = categoryPoints
         self.redemptionMultiplier = redemptionMultiplier
+        self.canCombinePoints = canCombinePoints
         self.icon = icon
     }
 }
