@@ -21,6 +21,7 @@ public enum SystemColor: String, Codable, Hashable, Equatable {
     case pink
     case brown
     case gray
+    case subduedBlue
     case foregound
 
     public init(from decoder: Decoder) throws {
