@@ -15,6 +15,11 @@ public struct Failable<Value: Codable>: Codable {
         self.value = try? container?.decode(Value.self)
     }
 
+    public func encode(to encoder: any Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(value)
+    }
+
     public init(_ value: Value) {
         self.value = value
     }
