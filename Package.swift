@@ -6,7 +6,8 @@ import PackageDescription
 let package = Package(
     name: "HakoShared",
     platforms: [
-        .macOS(.v10_15)
+        .macOS(.v10_15),
+        .iOS(.v17),
     ],
     products: [
         .library(
