@@ -22,6 +22,7 @@ public enum CardIcon: String, Codable, Hashable, Equatable {
     case tan
     case white
     case gray
+    case lightGray
     case unknown
 
     public init(from decoder: Decoder) throws {
