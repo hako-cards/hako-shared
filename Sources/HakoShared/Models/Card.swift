@@ -24,7 +24,7 @@ public struct Card: Hashable, Equatable, Identifiable, Codable {
     public var name: String
     public var issuer: Issuer
     public var basePoints: [Points]
-    public var categoryPoints: PointsKind?
+    public var categoryPoints: Failable<PointsKind>?
     public var redemptionMultiplier: Double?
     public var canCombinePoints: Bool
     public var icon: CardIcon
@@ -43,7 +43,7 @@ public struct Card: Hashable, Equatable, Identifiable, Codable {
         self.name = name
         self.issuer = issuer
         self.basePoints = basePoints
-        self.categoryPoints = categoryPoints
+        self.categoryPoints = categoryPoints.map(Failable.init)
         self.redemptionMultiplier = redemptionMultiplier
         self.canCombinePoints = canCombinePoints
         self.icon = icon

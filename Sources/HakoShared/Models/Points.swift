@@ -18,10 +18,10 @@ public struct Points: Codable, Hashable, Equatable {
     }
 
     public var percent: Double
-    public var attributes: [Attribute]
+    public var attributes: [Failable<Attribute>]
 
     public init(percent: Double, attributes: [Attribute]) {
         self.percent = percent
-        self.attributes = attributes
+        self.attributes = attributes.map(Failable.init)
     }
 }
