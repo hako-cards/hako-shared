@@ -22,7 +22,7 @@ extension PointKind {
         public var end: Date
         public var activateBy: Date?
 
-        init(start: Date, end: Date, activateBy: Date? = nil) {
+        public init(start: Date, end: Date, activateBy: Date? = nil) {
             self.start = start
             self.end = end
             self.activateBy = activateBy
