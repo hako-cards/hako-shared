@@ -37,7 +37,7 @@ public struct Card: Hashable, Equatable, Identifiable, Codable {
         basePoints: [Point],
         categoryPoints: [SpendCategory.ID: [Point]],
         redemptionReward: Point? = nil,
-        canCombinePoints: Bool
+        canCombinePoints: Bool = false
     ) {
         self.id = id
         self.name = name
