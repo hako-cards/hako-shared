@@ -22,22 +22,22 @@ public struct Card: Hashable, Equatable, Identifiable, Codable {
 
     public var id: ID
     public var name: String
+    public var icon: CardIcon
     public var issuer: Issuer
     public var basePoints: [Reward]
     public var categoryPoints: [SpendCategory.ID: [Reward]]
     public var redemptionReward: Reward?
     public var canCombinePoints: Bool
-    public var icon: CardIcon
 
     public init(
         id: ID,
         name: String,
+        icon: CardIcon,
         issuer: Issuer,
         basePoints: [Reward],
         categoryPoints: [SpendCategory.ID: [Reward]],
         redemptionReward: Reward? = nil,
-        canCombinePoints: Bool,
-        icon: CardIcon
+        canCombinePoints: Bool
     ) {
         self.id = id
         self.name = name
