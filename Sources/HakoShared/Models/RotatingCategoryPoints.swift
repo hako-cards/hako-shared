@@ -7,11 +7,6 @@
 
 import Foundation
 
-public enum PointsKind: Codable, Hashable, Equatable {
-    case fixed(FixedCategoryPoints)
-    case rotating([RotatingCategoryPoints])
-}
-
 public struct RotatingCategoryPoints: Codable, Hashable, Equatable {
     public var start: Date
     public var end: Date
@@ -27,14 +22,6 @@ public struct RotatingCategoryPoints: Codable, Hashable, Equatable {
         self.start = start
         self.end = end
         self.requiresActivation = requiresActivation
-        self.categoryPoints = categoryPoints
-    }
-}
-
-public struct FixedCategoryPoints: Codable, Hashable, Equatable {
-    public var categoryPoints: [SpendCategory.ID: [Points]]
-
-    public init(categoryPoints: [SpendCategory.ID : [Points]]) {
         self.categoryPoints = categoryPoints
     }
 }

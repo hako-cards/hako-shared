@@ -20,7 +20,7 @@ public struct Failable<Value: Codable>: Codable {
         try container.encode(value)
     }
 
-    public init(_ value: Value) {
+    public init(_ value: Value?) {
         self.value = value
     }
 }

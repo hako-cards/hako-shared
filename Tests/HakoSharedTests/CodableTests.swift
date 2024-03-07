@@ -42,46 +42,24 @@ final class CodableTests: XCTestCase {
         XCTAssertEqual(container.color, .blue)
     }
 
-    func testFailable() throws {
-        let card = Card(
-            id: "card_id",
-            name: "Name",
-            issuer: .init(id: "issuer", name: "Issuer"),
-            basePoints: [],
-            categoryPoints: .fixed(
-                .init(
-                    categoryPoints: ["foo" : [.init(
-                        percent: 1,
-                        attributes: [.applePay]
-                    )]]
-                )
-            ),
-            redemptionMultiplier: nil,
-            canCombinePoints: false,
-            icon: .gold
-        )
+    func testFailableEncodeDecode() throws {
+        let points = Points(percent: 1, attributes: [.applePay, .caveat("Hello")])
 
-        let data = try JSONEncoder().encode(card)
-        let decoded = try JSONDecoder().decode(Card.self, from: data)
+        let data = try JSONEncoder().encode(points)
+        let decoded = try JSONDecoder().decode(Points.self, from: data)
 
-        XCTAssertEqual(card, decoded)
+        XCTAssertEqual(points, decoded)
     }
 
-    func testNilFailable() throws {
-        let card = Card(
-            id: "card_id",
-            name: "Name",
-            issuer: .init(id: "issuer", name: "Issuer"),
-            basePoints: [],
-            categoryPoints: nil,
-            redemptionMultiplier: nil,
-            canCombinePoints: false,
-            icon: .gold
-        )
+    func testFailableInArray() throws {
+        var points = Points(percent: 1, attributes: [.applePay, .caveat("Hello")])
+        points.attributes.append(.init(nil))
 
-        let data = try JSONEncoder().encode(card)
-        let decoded = try JSONDecoder().decode(Card.self, from: data)
+        let json = "{\"percent\":1,\"attributes\":[{\"applePay\":{}},{\"caveat\":{\"_0\":\"Hello\"}},{\"ohNoUnknownnn\":{}}]}"
 
-        XCTAssertEqual(card, decoded)
+        let data = json.data(using: .utf8)!
+        let decoded = try JSONDecoder().decode(Points.self, from: data)
+
+        XCTAssertEqual(points, decoded)
     }
 }
