@@ -11,6 +11,8 @@ public struct Points: Codable, Hashable, Equatable {
     public enum Attribute: Identifiable, Codable, Hashable, Equatable {
         case applePay
         case caveat(String)
+        case info(String)
+        case bonus(String)
 
         public var id: Self {
             self
