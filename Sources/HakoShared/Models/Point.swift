@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Reward: Codable, Hashable, Equatable {
+public struct Point: Codable, Hashable, Equatable {
     public enum Attribute: Codable, Hashable, Equatable {
         case applePay
         case caveat(String)
@@ -37,8 +37,8 @@ public struct Reward: Codable, Hashable, Equatable {
 
     public init(
         multiplier: Double,
-        attributes: [Attribute],
-        kind: Kind
+        attributes: [Attribute] = [],
+        kind: Kind = .standard
     ) {
         self.multiplier = multiplier
         self._attributes = FailableArray(wrapped: attributes)
