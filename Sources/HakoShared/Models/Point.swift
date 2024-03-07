@@ -8,37 +8,15 @@
 import Foundation
 
 public struct Point: Codable, Hashable, Equatable {
-    public enum Attribute: Codable, Hashable, Equatable {
-        case applePay
-        case caveat(String)
-        case info(String)
-
-        public var id: Self {
-            self
-        }
-    }
-
-    public enum Kind: Codable, Hashable, Equatable {
-        case standard
-        case rotating(
-            start: Date,
-            end: Date,
-            activateBy: Date?
-        )
-
-        public var id: Self {
-            self
-        }
-    }
-
     public var multiplier: Double
-    @FailableArray public var attributes: [Attribute]
-    @Failable public var kind: Kind?
+   
+    @FailableArray public var attributes: [PointAttribute]
+    @Failable public var kind: PointKind?
 
     public init(
         multiplier: Double,
-        attributes: [Attribute] = [],
-        kind: Kind = .standard
+        attributes: [PointAttribute] = [],
+        kind: PointKind = .standard
     ) {
         self.multiplier = multiplier
         self._attributes = FailableArray(wrapped: attributes)
