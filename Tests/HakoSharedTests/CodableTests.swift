@@ -43,31 +43,31 @@ final class CodableTests: XCTestCase {
     }
 
     func testFailableEncodeDecode() throws {
-        let points = Reward(
+        let points = Point(
             multiplier: 1,
             attributes: [.applePay, .caveat("Hello")],
-            kind: .rotating(
+            kind: .rotating(.init(
                 start: .now,
                 end: .now,
                 activateBy: nil
-            )
+            ))
         )
 
         let data = try JSONEncoder().encode(points)
-        let decoded = try JSONDecoder().decode(Reward.self, from: data)
+        let decoded = try JSONDecoder().decode(Point.self, from: data)
 
         XCTAssertEqual(points, decoded)
     }
 
     func testFailableDecoding() throws {
-        var points = Reward(
+        var points = Point(
             multiplier: 1,
             attributes: [.applePay, .caveat("Hello")],
-            kind: .rotating(
+            kind: .rotating(.init(
                 start: .now,
                 end: .now,
                 activateBy: nil
-            )
+            ))
         )
 
         points.kind = nil
@@ -93,7 +93,7 @@ final class CodableTests: XCTestCase {
         """
 
         let data = json.data(using: .utf8)!
-        let decoded = try JSONDecoder().decode(Reward.self, from: data)
+        let decoded = try JSONDecoder().decode(Point.self, from: data)
 
         XCTAssertEqual(points, decoded)
     }
