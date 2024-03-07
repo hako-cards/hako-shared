@@ -43,22 +43,57 @@ final class CodableTests: XCTestCase {
     }
 
     func testFailableEncodeDecode() throws {
-        let points = Points(percent: 1, attributes: [.applePay, .caveat("Hello")])
+        let points = Reward(
+            multiplier: 1,
+            attributes: [.applePay, .caveat("Hello")],
+            kind: .rotating(
+                start: .now,
+                end: .now,
+                activateBy: nil
+            )
+        )
 
         let data = try JSONEncoder().encode(points)
-        let decoded = try JSONDecoder().decode(Points.self, from: data)
+        let decoded = try JSONDecoder().decode(Reward.self, from: data)
 
         XCTAssertEqual(points, decoded)
     }
 
-    func testFailableInArray() throws {
-        var points = Points(percent: 1, attributes: [.applePay, .caveat("Hello")])
-        points.attributes.append(.init(nil))
+    func testFailableDecoding() throws {
+        var points = Reward(
+            multiplier: 1,
+            attributes: [.applePay, .caveat("Hello")],
+            kind: .rotating(
+                start: .now,
+                end: .now,
+                activateBy: nil
+            )
+        )
 
-        let json = "{\"percent\":1,\"attributes\":[{\"applePay\":{}},{\"caveat\":{\"_0\":\"Hello\"}},{\"ohNoUnknownnn\":{}}]}"
+        points.kind = nil
+
+        let json = """
+        {
+          "multiplier": 1,
+          "attributes": [
+            {
+              "applePay": {}
+            },
+            {
+              "caveat": {
+                "_0": "Hello"
+              }
+            },
+            {
+              "ohNoUnknownnn": {}
+            }
+          ],
+          "kind": "garbage"
+        }
+        """
 
         let data = json.data(using: .utf8)!
-        let decoded = try JSONDecoder().decode(Points.self, from: data)
+        let decoded = try JSONDecoder().decode(Reward.self, from: data)
 
         XCTAssertEqual(points, decoded)
     }
