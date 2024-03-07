@@ -34,8 +34,8 @@ public struct Card: Hashable, Equatable, Identifiable, Codable {
         name: String,
         icon: CardIcon,
         issuer: Issuer,
-        basePoints: [Point],
-        categoryPoints: [SpendCategory.ID: [Point]],
+        basePoints: [Point] = [],
+        categoryPoints: [SpendCategory.ID: [Point]] = [:],
         redemptionReward: Point? = nil,
         canCombinePoints: Bool = false
     ) {
