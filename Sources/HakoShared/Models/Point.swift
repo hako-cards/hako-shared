@@ -16,7 +16,7 @@ public struct Point: Codable, Hashable, Equatable {
     public init(
         multiplier: Decimal,
         attributes: [PointAttribute] = [],
-        kind: PointKind?
+        kind: PointKind? = nil
     ) {
         self.multiplier = multiplier
         self._attributes = FailableArray(wrapped: attributes)
