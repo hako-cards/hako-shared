@@ -8,18 +8,18 @@
 import Foundation
 
 public struct Point: Codable, Hashable, Equatable {
-    public var multiplier: Double
-   
+    public var multiplier: Decimal
+
     @FailableArray public var attributes: [PointAttribute]
     @Failable public var kind: PointKind?
 
     public init(
-        multiplier: Double,
+        multiplier: Decimal,
         attributes: [PointAttribute] = [],
-        kind: PointKind = .standard
+        kind: PointKind?
     ) {
         self.multiplier = multiplier
         self._attributes = FailableArray(wrapped: attributes)
-        self._kind = Failable(wrapped: kind)
+        self._kind = Failable(wrapped: kind ?? .standard)
     }
 }
