@@ -9,4 +9,8 @@ import Foundation
 
 public struct Version: Codable {
     public var minimumBuild: Int
+
+    public init(minimumBuild: Int) {
+        self.minimumBuild = minimumBuild
+    }
 }
