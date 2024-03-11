@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Version: Codable {
-    var minimumBuild: Int
+public struct Version: Codable {
+    public var minimumBuild: Int
 }
