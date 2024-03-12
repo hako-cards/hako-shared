@@ -12,6 +12,7 @@ public enum PaymentProcessor: String, Codable, Hashable, Equatable, Identifiable
 
     case visa
     case mastercard
+    case amex
     case unknown
 
     public init(from decoder: Decoder) throws {
