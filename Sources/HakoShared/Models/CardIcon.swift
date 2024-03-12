@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum CardIcon: String, Codable, Hashable, Equatable {
+public enum CardIcon: String, Codable, Hashable, Equatable, CaseIterable {
     case black
     case bronze
     case darkBlue
