@@ -24,14 +24,14 @@ public struct SpendCategory: Identifiable, Hashable, Equatable, Codable {
     public var name: String
     public var tint: SystemColor
     public var parent: SpendCategory.ID?
-    public var networks: [CardNetwork]?
+    public var networks: Set<CardNetwork>?
 
     public init(
         id: ID,
         name: String,
         tint: SystemColor,
         parent: SpendCategory.ID? = nil,
-        networks: [CardNetwork]? = nil
+        networks: Set<CardNetwork>? = nil
     ) {
         self.id = id
         self.name = name
