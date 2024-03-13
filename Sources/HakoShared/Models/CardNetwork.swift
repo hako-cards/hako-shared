@@ -7,12 +7,13 @@
 
 import Foundation
 
-public enum PaymentProcessor: String, Codable, Hashable, Equatable, Identifiable {
+public enum CardNetwork: String, Codable, Hashable, Equatable, Identifiable {
     public var id: Self { self }
 
     case visa
     case mastercard
     case amex
+    case discover
     case unknown
 
     public init(from decoder: Decoder) throws {

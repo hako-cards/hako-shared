@@ -28,7 +28,7 @@ public struct Card: Hashable, Equatable, Identifiable, Codable {
     public var categoryPoints: [SpendCategory.ID: [Point]]
     public var redemptionReward: RedemptionReward?
     public var canCombinePoints: Bool
-    public var processor: PaymentProcessor
+    public var network: CardNetwork
 
     public init(
         id: ID,
@@ -39,7 +39,7 @@ public struct Card: Hashable, Equatable, Identifiable, Codable {
         categoryPoints: [SpendCategory.ID: [Point]] = [:],
         redemptionReward: RedemptionReward? = nil,
         canCombinePoints: Bool = false,
-        processor: PaymentProcessor
+        network: CardNetwork
     ) {
         self.id = id
         self.name = name
@@ -49,6 +49,6 @@ public struct Card: Hashable, Equatable, Identifiable, Codable {
         self.redemptionReward = redemptionReward
         self.canCombinePoints = canCombinePoints
         self.icon = icon
-        self.processor = processor
+        self.network = network
     }
 }
