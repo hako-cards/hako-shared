@@ -25,18 +25,21 @@ public struct SpendCategory: Identifiable, Hashable, Equatable, Codable {
     public var tint: SystemColor
     public var parent: SpendCategory.ID?
     public var networks: Set<CardNetwork>?
+    public var showCategoryCardsOnly: Bool
 
     public init(
         id: ID,
         name: String,
         tint: SystemColor,
         parent: SpendCategory.ID? = nil,
-        networks: Set<CardNetwork>? = nil
+        networks: Set<CardNetwork>? = nil,
+        showCategoryCardsOnly: Bool = false
     ) {
         self.id = id
         self.name = name
         self.tint = tint
         self.parent = parent
         self.networks = networks
+        self.showCategoryCardsOnly = showCategoryCardsOnly
     }
 }
